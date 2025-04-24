@@ -62,16 +62,18 @@ yarn preview
 
 ## Deploy to Netlify
 
-1. Create a new site in Netlify and connect your GitHub repo.
-2. Set build command to:
+1. Install Netlify CLI:
    ```bash
-   npm run build
+   npm install -g netlify-cli
    ```
-3. Set publish directory to:
+2. Initialize your project:
+   ```bash
+   netlify init
    ```
-   build
+3. Deploy to Netlify:
+   ```bash
+   netlify deploy --dir=dist --prod
    ```
-4. Deploy and enjoy!
 
 ## To-Do
 
