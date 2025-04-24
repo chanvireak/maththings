@@ -77,6 +77,7 @@ yarn preview
 
 ## To-Do
 
+- [ ] Clean up the code and add comments
 - [ ] Review and improve hint
 - [ ] Add image to each hint
 - [ ] Improve responsive design
