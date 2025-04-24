@@ -8,7 +8,7 @@ function Header() {
     <header className="sticky top-0 z-30 bg-white/80 backdrop-blur border-b border-blue-100 shadow-sm">
       <div className="max-w-5xl container mx-auto px-2 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center justify-between w-full sm:w-auto">
-          <span className="text-2xl font-extrabold text-yellow-700 tracking-tight">🧮 MathThings!</span>
+          <span className="text-2xl font-extrabold text-yellow-700 tracking-tight">MathThings!</span>
           <button
             className="sm:hidden p-2 rounded-md hover:bg-blue-50 transition-colors ml-2"
             aria-label="Toggle menu"
@@ -26,7 +26,7 @@ function Header() {
         </nav>
       </div>
       <div className="w-full bg-[#e8f0fe] text-yellow-800 text-base py-2 px-4 text-center border-b border-blue-100 shadow-sm">
-        📶 Our WiFi doesn't go on strike! Thank <span className="text-yellow-800 font-bold">Nariza</span> for hosting our 🧮 MathThings! party this month! 🥳
+        📶 Our WiFi doesn't go on strike! Thank <span className="text-yellow-800 font-bold">Nariza</span> for hosting our MathThings! party this month! 🥳
       </div>
     </header>
   );

@@ -3,7 +3,7 @@ function About() {
     <main className="w-full min-h-screen flex flex-col items-center justify-start bg-yellow-50 px-4 py-8 sm:py-16">
       <section className="w-full max-w-3xl rounded-3xl shadow-2xl bg-white flex flex-col items-center border border-yellow-100 overflow-hidden">
         <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 text-white px-6 py-6 font-extrabold text-2xl sm:text-3xl w-full text-center tracking-tight shadow">
-          About <span className="text-white drop-shadow">🧮 MathThings!</span>
+          About <span className="text-white drop-shadow">MathThings!</span>
         </div>
         
         <div className="p-4 sm:p-8 w-full flex flex-col">
