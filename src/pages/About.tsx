@@ -27,7 +27,7 @@ function About() {
           <section className="w-full py-4">
             <h2 className="text-yellow-600 text-2xl font-bold mb-2">Self-Hosting</h2>
             <p className="text-yellow-700 text-lg sm:text-xl max-w-2xl">
-              Want to run MathThings! on your own server? Check out our <a href="https://github.com/chanvireak/times" className="text-yellow-600 underline" target="_blank" rel="noopener noreferrer">GitHub repository</a> for setup instructions and source code.
+              Want to run MathThings! on your own server? Check out our <a href="https://github.com/chanvireak/maththings" className="text-yellow-600 underline" target="_blank" rel="noopener noreferrer">GitHub repository</a> for setup instructions and source code.
             </p>
           </section>
 
