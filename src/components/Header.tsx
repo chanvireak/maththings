@@ -30,9 +30,9 @@ function Header() {
         <nav
           className={`flex-col sm:flex-row flex gap-2 sm:gap-6 text-base font-medium items-center sm:items-center justify-center transition-all duration-200 ${menuOpen ? 'flex' : 'hidden'} sm:flex`}
         >
-          <Link to="/" className="px-6 py-2 rounded-lg font-bold text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">Home</Link>
-          <Link to="/map" className="px-6 py-2 rounded-lg font-bold text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">Quest Map</Link> 
-          <Link to="/about" className="px-6 py-2 rounded-lg font-bold text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">About</Link>
+          <Link to="/" onClick={() => setMenuOpen(false)} className="px-6 py-2 rounded-lg font-bold text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">Home</Link>
+          <Link to="/map" onClick={() => setMenuOpen(false)} className="px-6 py-2 rounded-lg font-bold text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">Quest Map</Link> 
+          <Link to="/about" onClick={() => setMenuOpen(false)} className="px-6 py-2 rounded-lg font-bold text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">About</Link>
         </nav>
       </div>
       {/* Notification banner below header */}
