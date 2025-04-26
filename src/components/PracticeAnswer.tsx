@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { Button } from './ui/button.tsx';
+import * as React from 'react'; // Import React and its hooks for building components
+import { Button } from './ui/button.tsx'; // Import custom Button component for submission
 
 interface PracticeAnswerProps {
   input: string;
@@ -8,7 +8,7 @@ interface PracticeAnswerProps {
   feedback: 'correct' | 'incorrect' | '';
   lastWrong: string;
   hint: string;
-}
+} // PracticeAnswerProps: defines expected props for PracticeAnswer component
 
 const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
   input,
@@ -18,15 +18,17 @@ const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
   lastWrong,
   hint,
 }) => {
-  const [overflow, setOverflow] = React.useState(false);
-  const [lastOverflow, setLastOverflow] = React.useState<string>("");
+  const [overflow, setOverflow] = React.useState(false); // State: tracks if user input exceeds allowed maximum
+  const [lastOverflow, setLastOverflow] = React.useState<string>(""); // State: stores last overflow value to display error message
 
   return (
+    // Render the PracticeAnswer UI container section
     <section className="w-full h-full rounded-2xl shadow-2xl bg-white flex flex-col border border-yellow-100">
       <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-400 rounded-t-2xl text-white px-4 sm:px-6 py-3 sm:py-4 font-extrabold text-lg sm:text-xl text-center tracking-tight shadow">
         Cast Your Spell
       </div>
       <div className="flex-1 flex flex-col items-center justify-between p-4 sm:p-6 lg:p-8 lg:h-[calc(224px+32px+160px)]">
+        {/* Display overflow warning, success, or incorrect feedback based on state */}
         <div className="h-32 sm:h-36 lg:h-56 flex flex-col items-center justify-center mb-4 text-center overflow-y-auto">
           {overflow ? (
             <div className="text-yellow-700">
@@ -57,12 +59,13 @@ const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
             pattern="[0-9]*"
             value={input}
             onChange={e => {
-              const raw = e.target.value.replace(/\D/g, "");
-              if (Number(raw) > 144) {
+              // Handle input change: sanitize input and enforce max spell limit
+              const raw = e.target.value.replace(/\D/g, ""); // Remove non-digit characters
+              if (Number(raw) > 144) { // Overflow check: maximum spell value is 144
                 setOverflow(true);
                 setLastOverflow(raw);
                 setInput("");
-              } else {
+              } else { // Valid input: update state and clear overflow
                 setOverflow(false);
                 setInput(raw);
               }
