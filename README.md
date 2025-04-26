@@ -4,7 +4,7 @@ A simple and interactive web app to practice multiplication tables with dynamic 
 
 ## What Is MathThings!
 
-This project is a React + TypeScript application designed to help learners practice multiplication facts in a fun, engaging way. It generates a sequence of randomized multiplication questions based on selected tables and provides real-time feedback.
+MathThings! is designed to help learners practice multiplication facts in a fun, engaging way. It generates a sequence of randomized multiplication questions based on selected tables and provides real-time feedback.
 
 ## Why It Was Made
 
