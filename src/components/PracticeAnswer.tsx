@@ -8,6 +8,7 @@ interface PracticeAnswerProps {
   feedback: 'correct' | 'incorrect' | '';
   lastWrong: string;
   hint: string;
+  inputLocked: boolean;
 } // PracticeAnswerProps: defines expected props for PracticeAnswer component
 
 const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
@@ -17,9 +18,18 @@ const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
   feedback,
   lastWrong,
   hint,
+  inputLocked,
 }) => {
   const [overflow, setOverflow] = React.useState(false); // State: tracks if user input exceeds allowed maximum
   const [lastOverflow, setLastOverflow] = React.useState<string>(""); // State: stores last overflow value to display error message
+
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  React.useEffect(() => {
+    if (!inputLocked && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [inputLocked]);
 
   return (
     // Render the PracticeAnswer UI container section
@@ -54,6 +64,7 @@ const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
         </div>
         <form onSubmit={handleSubmit} className="w-full max-w-xs flex flex-col items-center gap-3 sm:gap-4">
           <input
+            ref={inputRef}
             type="text"
             inputMode="numeric"
             pattern="[0-9]*"
@@ -70,10 +81,11 @@ const PracticeAnswer: React.FC<PracticeAnswerProps> = ({
                 setInput(raw);
               }
             }}
-            autoFocus
+            autoFocus={false}
+            disabled={inputLocked}
             className="w-24 sm:w-32 h-20 sm:h-24 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-yellow-700 text-center border-2 border-gray-300 rounded-lg appearance-none [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none [appearance:textfield]"
           />
-          <Button type="submit" className="mt-1 sm:mt-2 px-4 sm:px-6 py-2 rounded-lg font-bold text-base sm:text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white">Cast Spell</Button>
+          <Button type="submit" className="mt-1 sm:mt-2 px-4 sm:px-6 py-2 rounded-lg font-bold text-base sm:text-lg shadow transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 bg-yellow-600 hover:bg-yellow-700 text-white" disabled={inputLocked}>Cast Spell</Button>
         </form>
       </div>
     </section>

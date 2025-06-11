@@ -65,6 +65,7 @@ function PracticeInterface() {
   const [input, setInput] = useState('');
   type FeedbackType = '' | 'correct' | 'incorrect';
   const [feedback, setFeedback] = useState<FeedbackType>('');
+  const [inputLocked, setInputLocked] = useState(false);
   const [total, setTotal] = useState(0);
   const [correct, setCorrect] = useState(0);
   const [time, setTime] = useState(0);
@@ -126,8 +127,13 @@ function PracticeInterface() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (inputLocked) return;
+    setInputLocked(true);
     const answerInt = parseInt(input, 10);
-    if (isNaN(answerInt)) return;
+    if (isNaN(answerInt)) {
+      setInputLocked(false);
+      return;
+    }
     
     const correctAnswer = question.a * question.b;
     
@@ -150,16 +156,18 @@ function PracticeInterface() {
           setCurrentIndex(i => i + 1);
           setFeedback('');
           setInput('');
+          setInputLocked(false);
         }, 500);
       } else {
         setFinished(true);
+        setInputLocked(false);
       }
     } else {
       incorrectAudioRef.current.play().catch(e => console.log("Audio play error:", e));
       setLastWrong(input);
       setFeedback('incorrect');
       setInput('');
-      
+      setTimeout(() => setInputLocked(false), 500); // Lock briefly to prevent spamming Enter
       // Load hint on demand
       setHint('Loading hint...');
       const key = String(Math.min(question.a, question.b));
@@ -244,6 +252,7 @@ function PracticeInterface() {
                 feedback={feedback}
                 lastWrong={lastWrong}
                 hint={hint}
+                inputLocked={inputLocked}
               />
             </div>
           </div>
