@@ -36,14 +36,26 @@ function PracticeInterface() {
       const combos = tables.flatMap((a: number) =>
         Array.from({ length: 12 }, (_, i) => ({ a, b: i + 1, swap: Math.random() < 0.5 }))
       );
-      
+
+      // Deduplicate: only one per unique product, regardless of order
+      const seen = new Set<string>();
+      const deduped: typeof combos = [];
+      for (const q of combos) {
+        // Use the sorted pair as the key
+        const key = [Math.min(q.a, q.b), Math.max(q.a, q.b)].join('x');
+        if (!seen.has(key)) {
+          seen.add(key);
+          deduped.push(q);
+        }
+      }
+
       // Shuffle using a more efficient algorithm
-      const shuffled = [...combos];
+      const shuffled = [...deduped];
       for (let i = shuffled.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
       }
-      
+
       return shuffled;
     };
     
