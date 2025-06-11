@@ -32,8 +32,8 @@ MathThings! was created to:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/chanvireak/times.git
-   cd multiplication-practice
+   git clone https://github.com/chanvireak/maththings.git
+   cd maththings
    ```
 2. Install dependencies:
    ```bash
